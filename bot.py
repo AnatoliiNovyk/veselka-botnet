@@ -6,8 +6,8 @@ import time
 # Конфігурація
 listen_port = 5000
 proxies = {
-    "http": "http://proxy.example.com:8080",
-    "https": "https://proxy.example.com:8080"
+    "http": "http://181.65.121.34:8080",
+    "https": "https://181.65.121.34:8080"
 }
 
 def listen_for_commands():
