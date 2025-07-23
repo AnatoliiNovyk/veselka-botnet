@@ -10,7 +10,7 @@ target_urls = [
     "https://rosseti.ru/about",
     "https://rosseti.ru/contact"
 ]
-bot_ips = ["bot1.local:5000", "bot2.local:5000"]  # Замініть на реальні IP:порт ботів
+bot_ips = ["192.168.1.14:5000", "bot2.local:5000"]  # Замініть на реальні IP:порт ботів
 proxies = {
     "http": "http://181.65.121.34:8080",
     "https": "https://181.65.121.34:8080"
